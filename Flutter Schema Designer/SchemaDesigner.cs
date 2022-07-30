@@ -70,10 +70,12 @@ class {this.model.schemaName}
             result += System.Environment.NewLine;
             foreach (var property in this.model.schemaProperties)
             {
-                result += $"{new String(' ', 8)}'{property.name}': {property.name},";
+                result += $"{new String(' ', 12)}'{property.name}': {property.name},";
                 result += System.Environment.NewLine;
             }
-            result += new String(' ', 4) + "};";
+            result += new String(' ', 8) + "};";
+            result += System.Environment.NewLine;
+            result += new String(' ', 4) + "}";
             result += System.Environment.NewLine;
 
             return result;
@@ -87,14 +89,16 @@ class {this.model.schemaName}
 
             result += "{";
             result += System.Environment.NewLine;
-            result += $"{new String(' ', 4)} return " + "{";
+            result += $"{new String(' ', 4)} return " + $"{this.model.schemaName}(";
             result += System.Environment.NewLine;
             foreach (var property in this.model.schemaProperties)
             {
-                result += $"{new String(' ', 8)}{property.name}: map['{property.name}'],";
+                result += $"{new String(' ', 12)}{property.name}: map['{property.name}'],";
                 result += System.Environment.NewLine;
             }
-            result += new String(' ', 4) + "};";
+            result += new String(' ', 8) + ");";
+            result += System.Environment.NewLine;
+            result += new String(' ', 4) + "}";
             result += System.Environment.NewLine;
 
             return result;
